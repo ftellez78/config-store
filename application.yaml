@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    consul:
+      host: ${CONSUL_HOSTNAME}
+      port: 8500
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        healthCheckPath: /actuator/health
+        prefer-ip-address: true
+        ip-address: ${spring.application.name}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh
